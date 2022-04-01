@@ -12,6 +12,9 @@
   <!-- Favicons -->
   <link href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Fpremium-icon%2Fletter-j_625186&psig=AOvVaw0tal40_P5WUQHky02qj2Eq&ust=1646230624611000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMDS046NpfYCFQAAAAAdAAAAABAD" rel="icon">
   
+  <!-- Ajax for form submission -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -370,7 +373,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="" role="form" id="submit-form">
+            <form action="" id="submit-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -433,6 +436,28 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+                                 
+  <!-- static website contact form submission tom mail or googlesheet -->
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+          url:"https://script.google.com/macros/s/AKfycbzI7VUMJrXtHxPuDrCH5_qumkgE-aKxuPODPytFGknPwpRWjzmdVOwtXQJC5KVJobnxtg/exec",
+          data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+</script>
+                               
 
 </body>
 
