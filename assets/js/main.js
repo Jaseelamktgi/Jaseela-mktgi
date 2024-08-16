@@ -231,6 +231,7 @@
     }
   });
 
+
   /**
    * Animation on scroll
    */
